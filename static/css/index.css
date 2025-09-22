@@ -654,6 +654,37 @@ code {
   .content.has-text-justified {
     font-size: 1rem;
   }
+  
+  /* Video layout responsive adjustments */
+  .column.is-one-third {
+    flex: none;
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .video-container {
+    padding: 0.5rem;
+  }
+  
+  .video-container figcaption {
+    font-size: 1.2rem;
+  }
+  
+  .video-container figcaption.dtour {
+    font-size: 1.3rem;
+  }
+  
+  .video-container figcaption.dtour small {
+    font-size: 1.3rem;
+  }
+  
+  .simulation-method .title.is-4 {
+    font-size: 2rem !important;
+  }
+  
+  .hardware-video {
+    max-height: 350px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -694,6 +725,36 @@ code {
     width: 100%;
     justify-content: center;
   }
+  
+  /* Video layout for very small screens */
+  .column.is-one-third {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .video-container {
+    padding: 0.25rem;
+  }
+  
+  .video-container figcaption {
+    font-size: 1rem;
+  }
+  
+  .video-container figcaption.dtour {
+    font-size: 1.1rem;
+  }
+  
+  .video-container figcaption.dtour small {
+    font-size: 1.1rem;
+  }
+  
+  .simulation-method .title.is-4 {
+    font-size: 1.75rem !important;
+  }
+  
+  .hardware-video {
+    max-height: 300px;
+  }
 }
 
 /* Tablet Responsive */
@@ -731,6 +792,103 @@ a:focus {
   outline-offset: 2px;
 }
 
+
+/* Video Container Styling */
+.video-container {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+  border: none;
+}
+
+.video-container:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.video-container video:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.video-container figcaption {
+  margin-top: 0.75rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.video-container figcaption.dtour {
+  color: #10b981;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.video-container figcaption.dtour small {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #10b981;
+}
+
+.small-video {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* Hardware video uniform styling - bigger than simulation videos */
+.hardware-video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  display: block;
+  max-height: 400px;
+}
+
+/* Ensure hardware videos in containers are bigger */
+.simulation-method .video-container video.small-video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+  max-height: 400px;
+}
+
+.simulation-method {
+  margin-bottom: 3rem;
+}
+
+.simulation-method:last-child {
+  margin-bottom: 0;
+}
+
+.simulation-method .title.is-4 {
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  color: var(--text-primary);
+  margin-bottom: 2rem !important;
+}
+
+.method-section {
+  margin-bottom: 3rem;
+}
+
+.method-section:last-child {
+  margin-bottom: 0;
+}
 
 /* Print styles */
 @media print {
