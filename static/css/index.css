@@ -1,11 +1,13 @@
 /* Modern CSS Variables for consistent theming */
 :root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
+  --primary-color: #3b82f6;
+  /* More vibrant blue */
+  --primary-hover: #2563eb;
   --secondary-color: #64748b;
   --accent-color: #0ea5e9;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
+  --text-primary: #0f172a;
+  /* Darker, richer text */
+  --text-secondary: #334155;
   --text-light: #94a3b8;
   --background-primary: #ffffff;
   --background-secondary: #f8fafc;
@@ -15,9 +17,8 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-subtle: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
   --border-radius: 12px;
   --border-radius-lg: 16px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -30,12 +31,33 @@ html {
 
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* User requested sans-serif */
   color: var(--text-primary);
   line-height: 1.6;
-  font-size: 16px;
-  background-color: var(--background-primary);
+  font-size: 18px;
+  /* Slightly larger base font */
+  background-color: #ffffff !important;
+  /* Force white background to remove blue vignette */
+  background-image: none !important;
+  box-shadow: none !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 
@@ -68,18 +90,18 @@ body {
 }
 
 .footer .icon-link {
-    font-size: 25px;
-    color: var(--text-secondary);
-    transition: var(--transition);
+  font-size: 25px;
+  color: var(--text-secondary);
+  transition: var(--transition);
 }
 
 .footer .icon-link:hover {
-    color: var(--primary-color);
-    transform: translateY(-2px);
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .link-block a {
-    margin: 8px 4px;
+  margin: 8px 4px;
 }
 
 .dnerf {
@@ -103,6 +125,15 @@ body {
   padding: 4rem 1.5rem;
 }
 
+.hero .container {
+  width: 100%;
+  /* Ensure container does not shrink in flex column */
+}
+
+.hero .columns {
+  width: 100%;
+}
+
 .teaser .hero-body {
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -115,11 +146,26 @@ body {
 
 /* Publication Content Styling */
 .publication-title {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 800 !important;
-    color: var(--text-primary) !important;
-    margin-bottom: 2rem !important;
-    line-height: 1.1 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  color: var(--text-primary) !important;
+  background: -webkit-linear-gradient(135deg, #1e3a8a, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem !important;
+  /* Reduced for subtitle */
+  line-height: 1.1 !important;
+}
+
+.publication-subtitle {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 2rem !important;
+  font-size: 2rem !important;
+  /* Increased from 1.5rem */
 }
 
 .publication-banner {
@@ -146,58 +192,72 @@ body {
 }
 
 .publication-authors {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500;
+  margin-bottom: 0.5rem !important;
+  /* Reduced for tighter spacing with venue */
 }
 
 .publication-venue {
-    color: var(--text-secondary);
-    width: fit-content;
-    font-weight: 600;
-    background: var(--background-accent);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    margin-top: 1rem;
-    display: inline-block;
+  color: var(--text-secondary);
+  width: fit-content;
+  font-weight: 600;
+  background: var(--background-accent);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.publication-venue-prominent {
+  color: #c026d3 !important;
+  /* Distinct Fuchsia/Purple color */
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  margin: 0 0 1.5rem 0 !important;
+  /* Removed top margin completely */
+  letter-spacing: 0.5px;
+  text-transform: none !important;
+  /* Force no caps */
 }
 
 .publication-awards {
-    color: #ef4444;
-    width: fit-content;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fef2f2, #fee2e2);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    border-left: 4px solid #ef4444;
-    margin-top: 1rem;
+  color: #ef4444;
+  width: fit-content;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border-left: 4px solid #ef4444;
+  margin-top: 1rem;
 }
 
 .publication-authors a {
-   color: var(--primary-color) !important;
-   text-decoration: none;
-   font-weight: 600;
-   transition: var(--transition);
-   position: relative;
+  color: var(--primary-color) !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
 }
 
 .publication-authors a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background: var(--gradient-accent);
-    transition: var(--transition);
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-accent);
+  transition: var(--transition);
 }
 
 .publication-authors a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .publication-authors a:hover {
-    color: var(--primary-hover) !important;
+  color: var(--primary-hover) !important;
 }
 
 .author-block {
@@ -218,28 +278,28 @@ body {
 
 /* Modern Video and Carousel Styling */
 .publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    overflow: hidden;
-    border-radius: var(--border-radius-lg) !important;
-    box-shadow: var(--shadow-xl);
-    transition: var(--transition);
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: var(--shadow-xl);
+  transition: var(--transition);
 }
 
 .publication-video:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
 .publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--border-radius-lg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-lg);
 }
 
 .publication-body img {
@@ -302,7 +362,7 @@ body {
   transform: scale(1.2);
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: 0.875rem;
   color: var(--text-light);
   font-style: italic;
@@ -603,85 +663,85 @@ code {
   .hero-body {
     padding: 2rem 1rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 3rem 1rem 2rem;
   }
-  
+
   .publication-title {
     font-size: 2.5rem !important;
     line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
   }
-  
+
   .publication-authors {
     font-size: 1rem !important;
   }
-  
+
   .button {
     margin: 0.25rem !important;
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
   }
-  
+
   .more-works-container {
     bottom: 2rem;
     right: 1rem;
     top: auto;
   }
-  
+
   .more-works-btn {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
   }
-  
+
   .more-works-dropdown {
     width: calc(100vw - 2rem);
     right: -1rem;
     bottom: calc(100% + 0.5rem);
     top: auto;
   }
-  
+
   .results-carousel .item {
     margin: 0.5rem;
     padding: 1rem;
   }
-  
+
   .teaser .hero-body {
     padding: 1rem;
   }
-  
+
   .content.has-text-justified {
     font-size: 1rem;
   }
-  
+
   /* Video layout responsive adjustments */
   .column.is-one-third {
     flex: none;
     width: 50%;
     margin-bottom: 1rem;
   }
-  
+
   .video-container {
     padding: 0.5rem;
   }
-  
+
   .video-container figcaption {
     font-size: 1.2rem;
   }
-  
+
   .video-container figcaption.dtour {
     font-size: 1.3rem;
   }
-  
+
   .video-container figcaption.dtour small {
     font-size: 1.3rem;
   }
-  
+
   .simulation-method .title.is-4 {
     font-size: 2rem !important;
   }
-  
+
   .hardware-video {
     max-height: 350px;
   }
@@ -691,23 +751,23 @@ code {
   .publication-title {
     font-size: 2rem !important;
   }
-  
+
   .hero-body {
     padding: 1.5rem 0.75rem;
   }
-  
+
   .more-works-container {
     position: fixed;
     bottom: 2rem;
     right: 1rem;
     z-index: 1000;
   }
-  
+
   .more-works-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
   }
-  
+
   .more-works-dropdown {
     position: absolute;
     bottom: calc(100% + 0.5rem);
@@ -715,43 +775,43 @@ code {
     width: calc(100vw - 2rem);
     max-width: 90vw;
   }
-  
+
   .link-block {
     display: block;
     margin-bottom: 0.5rem;
   }
-  
+
   .button {
     width: 100%;
     justify-content: center;
   }
-  
+
   /* Video layout for very small screens */
   .column.is-one-third {
     width: 100%;
     margin-bottom: 1rem;
   }
-  
+
   .video-container {
     padding: 0.25rem;
   }
-  
+
   .video-container figcaption {
     font-size: 1rem;
   }
-  
+
   .video-container figcaption.dtour {
     font-size: 1.1rem;
   }
-  
+
   .video-container figcaption.dtour small {
     font-size: 1.1rem;
   }
-  
+
   .simulation-method .title.is-4 {
     font-size: 1.75rem !important;
   }
-  
+
   .hardware-video {
     max-height: 300px;
   }
@@ -762,7 +822,7 @@ code {
   .hero-body {
     padding: 3rem 2rem;
   }
-  
+
   .publication-header .hero-body {
     padding: 4rem 2rem 3rem;
   }
@@ -774,13 +834,15 @@ code {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.hero, .section {
+.hero,
+.section {
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -795,18 +857,23 @@ a:focus {
 
 /* Video Container Styling */
 .video-container {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  transition: none;
-  border: none;
+  background: var(--background-primary);
+  padding: 1rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  /* Default shadow for cards */
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  height: 100%;
+  /* Ensure uniform height in columns */
+  display: flex;
+  flex-direction: column;
 }
 
 .video-container:hover {
-  transform: none;
-  box-shadow: none;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-color);
 }
 
 .video-container video {
@@ -814,21 +881,24 @@ a:focus {
   height: auto;
   border-radius: var(--border-radius);
   display: block;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
 }
 
-.video-container video:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+.video-container:hover video {
+  box-shadow: none;
+  /* Let the container handle the shadow */
 }
 
 .video-container figcaption {
-  margin-top: 0.75rem;
-  font-size: 1.4rem;
-  font-weight: 700;
+  margin-top: auto;
+  /* Push caption to bottom */
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--text-secondary);
   text-align: center;
+  padding-top: 0.5rem;
 }
 
 .video-container figcaption.dtour {
@@ -895,17 +965,15 @@ a:focus {
   .more-works-container {
     display: none;
   }
-  
-  .hero, .section {
+
+  .hero,
+  .section {
     animation: none;
   }
-  
+
   .button {
     background: transparent !important;
     color: var(--text-primary) !important;
     box-shadow: none !important;
   }
 }
-
-
-
